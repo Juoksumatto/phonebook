@@ -31,8 +31,8 @@ let persons = [
       id: "4"
     }]
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resilve(__dirname, 'dist', 'index.html'))
+app.get('*', (request, response) => {
+  response.sendFile(path.resilve(__dirname, 'dist', 'index.html'))
 })
 
 app.get('/api/persons', (request, response) => {
@@ -74,4 +74,5 @@ app.delete('/api/persons/:id', (request, response) => {
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+
 })
