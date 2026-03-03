@@ -31,11 +31,6 @@ let persons = [
       id: "4"
     }]
 
-// catch-all route: use a regex to avoid path-to-regexp wildcard bugs
-app.get(/.*/, (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
-})
-
 app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
@@ -70,6 +65,11 @@ app.post('/api/persons', (request, response) => {
 app.delete('/api/persons/:id', (request, response) => {
     persons = persons.filter(p => p.id !== request.params.id)
     response.status(204).end()
+})
+
+// SPA fallback: serve index.html for all unmatched routes (must be last)
+app.get(/.*/, (request, response) => {
+  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
 
 const PORT = process.env.PORT || 3001
