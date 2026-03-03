@@ -31,8 +31,8 @@ let persons = [
       id: "4"
     }]
 
-// catch-all route must use '/*' to avoid path-to-regexp errors in newer Node/express versions
-app.get('/*', (request, response) => {
+// catch-all route: use a regex to avoid path-to-regexp wildcard bugs
+app.get(/.*/, (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
 
