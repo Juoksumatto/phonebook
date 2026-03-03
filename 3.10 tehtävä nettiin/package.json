@@ -1,15 +1,14 @@
 {
-  "name": "uusi-kansio",
+  "name": "phonebook-app",
   "private": true,
   "version": "1.0.0",
-  "description": "Fullstack app",
+  "description": "Fullstack phonebook app",
   "type": "commonjs",
-  "main": "backend/index.js",
   "scripts": {
-    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend && cp -r frontend/dist backend/dist",
-    "start": "node backend/index.js"
+    "build": "cd \"3.10 tehtävä nettiin\" && npm run build",
+    "start": "cd \"3.10 tehtävä nettiin\" && npm start"
   },
   "engines": {
-    "node": "18"
+    "node": "22"
   }
 }
