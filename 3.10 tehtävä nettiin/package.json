@@ -6,9 +6,8 @@
   "type": "commonjs",
   "main": "backend/index.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build && cd .. && cp -r frontend/dist backend/dist",
-    "start": "cd backend && node index.js",
-    "dev": "cd backend && npm install && cd ../frontend && npm install"
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend && cp -r frontend/dist backend/dist",
+    "start": "node backend/index.js"
   },
   "engines": {
     "node": "18"
