@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const path =require('path')
 
-app.use(exspress.static('dist'))
+app.use(express.static('dist'))
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
@@ -32,7 +32,7 @@ let persons = [
     }]
 
 app.get('*', (request, response) => {
-  response.sendFile(path.resilve(__dirname, 'dist', 'index.html'))
+  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
 
 app.get('/api/persons', (request, response) => {
@@ -74,4 +74,5 @@ app.delete('/api/persons/:id', (request, response) => {
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
+
 })
