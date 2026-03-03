@@ -67,7 +67,6 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-// SPA fallback: serve index.html for routes without file extensions (must be last)
 app.get(/^(?!.*\.).*$/, (request, response) => {
   response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
