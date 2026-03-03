@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const cors = require('cors')
-const path =require('path')
+const path = require('path')
 
-app.use(express.static('dist'))
+const distPath = path.join(__dirname, 'dist')
+app.use(express.static(distPath))
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use(cors())
@@ -67,8 +68,8 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-app.get(/^(?!.*\.).*$/, (request, response) => {
-  response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+app.use((request, response) => {
+  response.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
 const PORT = process.env.PORT || 3001
